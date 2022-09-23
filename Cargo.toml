@@ -1,0 +1,11 @@
+[package]
+name = "rust-mips"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mips-rt = "0.3.0"
+
+[profile.release]
+opt-level = 2
+lto = true
