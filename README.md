@@ -2,10 +2,8 @@
 ## Build Requirements
 
 ```shell
-rustup install nightly-2021-01-26 # I haven't tried all versions of nighty but had trouble with latest..
-rustup default nightly-2021-01-26
-rustup component add rust-src
-rustup component add llvm-tools-preview
+rustup install nightly-2022-09-26 # I haven't tried all versions of nighty but this is the only one I've had any luck with
+rustup component add rust-src --toolchain nightly-2022-04-24
 ```
 
 ## Goals
