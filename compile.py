@@ -6,7 +6,7 @@ import hashlib
 from rangetree import RangeTree
 from elftools.elf.elffile import ELFFile
 
-def load_minigeth(fn="minigeth"):
+def load_elf(fn):
   elf = open(fn, "rb")
   data = elf.read()
   elf.seek(0)
@@ -47,7 +47,7 @@ def load_minigeth(fn="minigeth"):
             r[ss:se] = symbol.name
           except KeyError:
             continue
-        #print(nsym, symbol.name, symbol['st_value'], symbol['st_size'])
+        print(nsym, symbol.name, symbol['st_value'], symbol['st_size'])
         if symbol.name == "runtime.gcenable":
           print(nsym, symbol.name)
           # nop gcenable
@@ -62,11 +62,9 @@ def load_minigeth(fn="minigeth"):
 
 
 if __name__ == "__main__":
-  fn = "minigeth"
-  if len(sys.argv) > 1:
-    fn = sys.argv[1]
+  fn = sys.argv[1]
 
-  prog_dat, prog_size, _ = load_minigeth(fn)
+  prog_dat, prog_size, _ = load_elf(fn)
   print("compiled %d bytes with md5 %s" % (prog_size, hashlib.md5(prog_dat).hexdigest()))
 
   with open(fn+".bin", "wb") as f:
