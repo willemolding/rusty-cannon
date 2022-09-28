@@ -1,6 +1,9 @@
 #![feature(restricted_std)]
 
 fn main() {
-	let x = 11;
-    println!("Hello Rust! {}", x)
+	let mut i = 0;
+	loop {
+		i+=1;
+    	println!("Hello Rust! {:?}", i);
+	}
 }
